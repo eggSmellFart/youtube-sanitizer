@@ -44,8 +44,8 @@ class filter_youtube_sanitizer extends moodle_text_filter {
 	 * Get the DOMDocument from the context. Find all the iframes and replace them with divs.
 	 * Add the script to bind the click functionality to the div so the Video starts on click.
 	 *
-	 * @param $text contains string
-	 * @param array of window sizes for the video
+	 * @param string $text contains string
+	 * @param array $options of window sizes for the video
 	 * @return  string
 	 */
     public function filter($text, array $options = array()) {
@@ -65,22 +65,18 @@ class filter_youtube_sanitizer extends moodle_text_filter {
                 $node->parentNode->replaceChild($newNode, $node);
             }
         }
-        // foreach ($dom->getElementsByTagName('a') as $nodeA) {
-        //     $hrefA = $nodeA->getAttribute('href');
-        //     if(preg_match("=youtube.*="/*embed/=i"*/, $hrefA)) {
-        //         echo '<pre>';var_dump($hrefA);echo '</pre>';
-		//
-        //     }
-        // }
         //Return the changed HTML string
         return $dom->saveHTML($dom);
     }
 	/**
-	 * i belong to a functionality
+	 * Places the JS script insinede the head und processes the strings for later usage. Div gets created with a JS that parses an
+     * iframe from the attributes of the clicked Video-placeholder
 	 *
-	 * @param $node contains the DOMDoc object
-	 * @param $url string conatining th e urk from the secific iframe
-	 */
+	 * @param object $node contains the DOMDoc object
+	 * @param string $url string conatining th e urk from the secific iframe
+     * @return strinfg $url containing the url
+     * @return DOMObject $newdiv
+     */
     public function video_embed_privacy_translate($node, $url) {
 
         global $PAGE, $CFG;
