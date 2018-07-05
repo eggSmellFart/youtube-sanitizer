@@ -20,7 +20,7 @@
  *  This filter will replace any links to a media file with
  *  a media plugin that plays that media inline
  *
- * @package    filter youtube sanitizer 
+ * @package    filter youtube sanitizer
  * @subpackage mediaplugin
  * @copyright  2004 onwards Martin Dougiamas  {@link http://moodle.com}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
